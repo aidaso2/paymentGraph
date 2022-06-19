@@ -1,0 +1,16 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+index:
+   path: /
+   controller: App\Controller\IndexController::index
+
+delpay:
+   path: /delpay/{id}
+   controller: App\Controller\IndexController::delpay
+
+addpay:
+   path: /addpay
+   controller: App\Controller\IndexController::addpay
+   methods: [POST]

@@ -1,0 +1,48 @@
+{% set leftTotal = paidTotal %}
+
+<div class="paymentGraphContainer">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Mokėjimo data</th>
+      <th scope="col">Kredito dalis</th>
+      <th scope="col">Palūkanos</th>
+      <th scope="col">Visa suma</th>
+      <th scope="col">Apmokėta</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row in paymentGraph %}
+    <tr>
+      <td>{{ row.paymentDate|date("Y-m-d") }}</th>
+      <td>
+      {{ row.creditPart }} € / 
+      {% if leftTotal > row.creditPart %}
+        {{ row.creditPart }}
+        {% set leftTotal = leftTotal - row.creditPart %}
+        {% set paid1 = row.creditPart %}
+      {% else %}
+        {{ leftTotal|round(2, 'ceil') }}
+        {% set paid1 = leftTotal %}
+        {% set leftTotal = 0 %}
+      {% endif %} €
+      </td>
+      <td>
+      {{ row.interest }} € / 
+        {% if leftTotal > row.interest %}
+        {{ row.interest }}
+        {% set leftTotal = leftTotal - row.interest %}
+        {% set paid2 = row.interest %}
+      {% else %}
+        {{ leftTotal|round(2, 'ceil') }}
+        {% set paid2 = leftTotal %}
+        {% set leftTotal = 0 %}
+      {% endif %} €
+      </td>
+      <td>{{ row.interest + row.creditPart }} €</td>
+      <td>{{ (paid1 + paid2)|round(2, 'ceil') }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,20 @@
+<div class="paymentGraphContainer">
+  <form action="/addpay" method="post">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Data</th>
+          <th scope="col">Suma</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><button type="submit" class="btn btn-primary">Pridėti mokėjimą</button></th>
+          <td><input type="date" class="form-control" id="date" name="date" aria-describedby="emailHelp" placeholder="payment date"></td>
+          <td> <input type="number" step=".01" class="form-control" id="amount" name="amount" placeholder="payment amount"></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>

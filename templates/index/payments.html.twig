@@ -1,0 +1,22 @@
+<div class="paymentGraphContainer">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Data</th>
+      <th scope="col">Suma</th>
+      <th scope="col">Pašalinti</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row in payments %}
+    <tr>
+      <th scope="row">{{ row.id }}</th>
+      <td>{{ row.paymentDate|date("Y-m-d") }}</td>
+      <td>{{ row.amount }}</td>
+      <td><a href="/delpay/{{ row.id }}">#</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
